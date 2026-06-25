@@ -1,0 +1,175 @@
+═══════════════════════════════════════════════════════════════════════════════
+    CHECKLIST DE DESPLIEGUE - PEOPLESOLUTION
+═══════════════════════════════════════════════════════════════════════════════
+
+FASE 1: PREPARACIÓN LOCAL
+─────────────────────────────────────────────────────────────────────────────
+
+[ ] 1. Abre PowerShell/Terminal en: D:\Users\AV-31273\Downloads\PeopleSolution-Final
+
+[ ] 2. Instala dependencias:
+       npm install
+
+[ ] 3. Compila para producción:
+       npm run build
+
+[ ] 4. Verifica que se creó carpeta "dist/" con:
+       ✓ index.html
+       ✓ assets/ (con archivos .css y .js)
+       ✓ Todos los .pdf
+       ✓ WhatsApp-Loginho.png
+
+[ ] 5. Copia el archivo ".htaccess" a la carpeta "dist/"
+       Origen: D:\Users\AV-31273\Downloads\PeopleSolution-Final\.htaccess
+       Destino: D:\Users\AV-31273\Downloads\PeopleSolution-Final\dist\.htaccess
+
+
+FASE 2: PREPARAR ARCHIVOS PARA SUBIR
+─────────────────────────────────────────────────────────────────────────────
+
+[ ] 6. Comprime la carpeta "dist/" (opcional, para subida más rápida):
+       Clic derecho > Enviar a > Carpeta comprimida
+       Renombra a: PeopleSolution-dist.zip
+
+[ ] 7. Abre tu cliente FTP:
+       - FileZilla
+       - WinSCP
+       - o el administrador de archivos de tu hosting
+
+
+FASE 3: CONEXIÓN AL HOSTING
+─────────────────────────────────────────────────────────────────────────────
+
+[ ] 8. Conecta con datos del hosting:
+       - Host/Servidor: [preguntar a Colombia Hosting]
+       - Usuario: [correo o usuario FTP]
+       - Contraseña: [contraseña FTP]
+       - Puerto: 21 (FTP) o 22 (SFTP)
+
+[ ] 9. Navega a la carpeta pública:
+       - Típicamente: /public_html/
+       - O: /www/
+       - O: /htdocs/
+       - O: /home/
+
+
+FASE 4: SUBIR ARCHIVOS
+─────────────────────────────────────────────────────────────────────────────
+
+[ ] 10. Si comprimiste:
+        - Sube PeopleSolution-dist.zip a la raíz pública
+        - Descomprime en el hosting (botón derecho > extraer)
+        - Mueve el contenido a la raíz (si descomprimió en subcarpeta)
+
+[ ] 11. Si subes archivos individuales:
+        - Crea una carpeta temporal
+        - Copia el contenido de dist/ (NO la carpeta en sí)
+        - Pega en la raíz pública
+
+[ ] 12. Verifica estructura en hosting:
+        /public_html/
+        ├── index.html ✓
+        ├── .htaccess ✓
+        ├── assets/
+        ├── *.pdf ✓
+        ├── WhatsApp-Loginho.png ✓
+        └── [otros archivos de dist/]
+
+
+FASE 5: CONFIGURACIÓN EN HOSTING
+─────────────────────────────────────────────────────────────────────────────
+
+[ ] 13. Si usas dominio propio:
+        - Ve a configuración de dominio en tu hosting
+        - Apunta la raíz a /public_html/ (o donde subiste)
+        - Espera 24-48h para propagación DNS
+
+[ ] 14. Si el hosting proporciona URL temporal (ej: servidor123.com.co):
+        - Debería estar lista inmediatamente
+
+
+FASE 6: PRUEBAS
+─────────────────────────────────────────────────────────────────────────────
+
+[ ] 15. Abre navegador:
+        https://tudominio.com
+        (O la URL temporal del hosting)
+
+[ ] 16. Verifica elemento por elemento:
+        [ ] Página carga completa
+        [ ] Estilos CSS aplicados (colores, fuentes, layouts)
+        [ ] Logo visible
+        [ ] Imágenes cargadas
+
+[ ] 17. Prueba cada sección:
+        [ ] Sección "Inicio" - scroll funciona
+        [ ] Sección "Noticias" - contenido visible
+        [ ] Sección "Documentos" - PDFs enumerados
+        [ ] Sección "Contacto" - información completa
+
+[ ] 18. Prueba funcionalidad:
+        [ ] Click botón "WhatsApp" → abre chat
+        [ ] Click links "Documentos" → descargan PDFs
+        [ ] Click "Alianza" → abre en nueva pestaña
+        [ ] Links internos (nav) funcionan
+
+[ ] 19. Responsivo:
+        [ ] Abre en móvil
+        [ ] Menú adaptado
+        [ ] PDFs accesibles en móvil
+
+[ ] 20. Consola (F12):
+        [ ] Sin errores rojos críticos
+        [ ] Sin advertencias de recursos no encontrados
+
+
+FASE 7: OPTIMIZACIÓN (OPCIONAL)
+─────────────────────────────────────────────────────────────────────────────
+
+[ ] 21. Si hosting permite, activa:
+        [ ] HTTPS/SSL (normalmente es gratis)
+        [ ] Compresión GZIP (está en .htaccess)
+        [ ] Caché del navegador (está en .htaccess)
+
+[ ] 22. Prueba carga:
+        [ ] Primera carga: ~ 2-5 segundos
+        [ ] Recarga: ~ 1-2 segundos (caché)
+
+
+FASE 8: FINALIZACIÓN
+─────────────────────────────────────────────────────────────────────────────
+
+[ ] 23. Documenta credenciales (guarda seguro):
+        - Host/URL: ___________________
+        - Usuario FTP: __________________
+        - Contraseña: (en gestor de contraseñas)
+        - Dominio: ____________________
+
+[ ] 24. Configura actualizaciones futuras:
+        - Para cambios: recompila localmente (npm run build)
+        - Sube de nuevo solo dist/
+
+[ ] 25. ¡LISTO! 🎉
+        Tu sitio está en línea.
+
+
+═══════════════════════════════════════════════════════════════════════════════
+SOLUCIÓN RÁPIDA DE PROBLEMAS
+═══════════════════════════════════════════════════════════════════════════════
+
+❌ "Página blanca" → Falta .htaccess o index.html en raíz
+   ✓ Copia .htaccess a dist/, recompila, resubir
+
+❌ "Recurso no encontrado" → PDFs no están en dist/
+   ✓ Verifica que public/ tenga los PDFs, recompila, resubir
+
+❌ "Error 404" en navegación → .htaccess no reescribe a index.html
+   ✓ Verifica .htaccess está en raíz pública, contenido correcto
+
+❌ "Estilos no cargan" → Rutas CSS incorrectas
+   ✓ Revisa console (F12), verifica nombres en dist/assets/
+
+❌ "Lentitud" → Caché del navegador antigua
+   ✓ Limpia caché: Ctrl+F5 (Windows) o Cmd+Shift+R (Mac)
+
+═══════════════════════════════════════════════════════════════════════════════

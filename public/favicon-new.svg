@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Background circle -->
+  <rect width="64" height="64" rx="12" fill="#1A1A2A"/>
+  
+  <!-- Main triangle icon -->
+  <polygon points="32,12 50,48 14,48" fill="#F5A000"/>
+  
+  <!-- Accent lighter triangle -->
+  <polygon points="32,18 45,44 19,44" fill="#F7B733" opacity="0.3"/>
+  
+  <!-- Highlight effect -->
+  <circle cx="32" cy="28" r="3" fill="rgba(255,255,255,0.6)"/>
+</svg>

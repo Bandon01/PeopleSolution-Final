@@ -1,0 +1,31 @@
+# Este archivo debe copiarse a la carpeta dist/ después de ejecutar: npm run build
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  
+  # Si la solicitud no es un archivo o carpeta existente
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  
+  # Redirige todas las rutas a index.html (necesario para SPA si se implementa routing en el futuro)
+  RewriteRule ^ index.html [QSA,L]
+  
+  # Compresión GZIP (opcional)
+  <IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+  </IfModule>
+  
+  # Cache headers (opcional)
+  <IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/html "access 1 hour"
+    ExpiresByType text/css "access 1 month"
+    ExpiresByType text/javascript "access 1 month"
+    ExpiresByType application/javascript "access 1 month"
+    ExpiresByType image/jpeg "access 1 month"
+    ExpiresByType image/gif "access 1 month"
+    ExpiresByType image/png "access 1 month"
+    ExpiresByType image/svg+xml "access 1 month"
+  </IfModule>
+</IfModule>
